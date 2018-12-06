@@ -1,6 +1,10 @@
 # nuxt-form
 just a sample using nuxt.js
 
+## Demo
+
+[こちら](https://junichi-h.github.io/nuxt-form/)
+
 
 ## install
 
@@ -20,3 +24,4 @@ yarn dev
 ```bash
 yarn generate
 ```
+
