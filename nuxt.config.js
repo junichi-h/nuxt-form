@@ -65,7 +65,9 @@ module.exports = {
       }
     }
   },
-  router: {},
+  router: {
+    base: 'nuxt-form'
+  },
   workbox: {
     dev: true
   }
