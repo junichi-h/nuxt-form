@@ -1,0 +1,43 @@
+{
+  "name": "nuxt-form",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:junichi-h/nuxt-form.git",
+  "author": "Junichi Honda <junichi.hnd@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/bulma": "^1.2.1",
+    "nuxt": "^2.3.4",
+    "ress": "^1.2.2",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.10.0",
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "postcss-preset-env": "^6.4.0",
+    "prettier": "^1.15.3",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0"
+  }
+}
