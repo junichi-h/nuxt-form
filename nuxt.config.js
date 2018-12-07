@@ -1,3 +1,5 @@
+const router = process.env.DEPLOY_ENV === 'GH_PAGES' ? { base: '/nuxt-form/' } : {};
+
 module.exports = {
   /*
   ** Headers of the page
@@ -10,19 +12,23 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.5.0/css/all.css' }
-    ]
-  },
-  htmlAttrs: {
-    lang: 'ja'
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }/*,
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.5.0/css/all.css' }*/
+    ],
+    htmlAttrs: {
+      lang: 'ja'
+    },
   },
   /*
   ** Customize the progress bar color
   */
   loading: false,
   css: [
-    '@/assets/sass/main.sass'
+    '@/assets/sass/main.sass',
+    '@fortawesome/fontawesome-free-webfonts',
+    '@fortawesome/fontawesome-free-webfonts/css/fa-brands.css',
+    '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css',
+    '@fortawesome/fontawesome-free-webfonts/css/fa-solid.css'
   ],
   modules: [
     [
@@ -66,9 +72,7 @@ module.exports = {
       }
     }
   },
-  router: {
-    base: '/nuxt-form/'
-  },
+  router,
   workbox: {
     dev: true
   }
