@@ -21,7 +21,7 @@ export default {
 
 <style lang="sass">
     html
-        font-size: 62.5%
+        // font-size: 62.5%
         overflow-y: visible
     body
         -moz-osx-font-smoothing: grayscale

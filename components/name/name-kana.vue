@@ -1,7 +1,7 @@
 <template lang="pug">
 .field.is-grouped
     label.label.app-label セイ
-    .control.is-expanded
+    .control.is-expanded.has-icons-right
         input.input(
             :class="{'is-danger': familyNameKanaErrorMessage.length > 0, 'is-success': isSuccessFamilyNameKana}"
             type="text"
@@ -9,9 +9,13 @@
             @input="updateFamilyNameKana"
             @blur="updateFamilyNameKana"
         )
+        span.icon.is-small.is-right(v-if="isSuccessFamilyNameKana")
+            i.fas.fa-check
+        span.icon.is-small.is-right(v-else-if="familyNameKanaErrorMessage.length > 0")
+            i.fas.fa-exclamation-triangle
         p.help.is-danger(v-if="familyNameKanaErrorMessage.length > 0") {{familyNameKanaErrorMessage}}
     label.label.second-label メイ
-    .control.is-expanded
+    .control.is-expanded.has-icons-right
         input.input(
             :class="{'is-danger': firstNameKanaErrorMessage.length > 0, 'is-success': isSuccessFirstNameKana}"
             type="text"
@@ -19,6 +23,10 @@
             @input="updateFirstNameKana"
             @blur="updateFirstNameKana"
         )
+        span.icon.is-small.is-right(v-if="isSuccessFirstNameKana")
+            i.fas.fa-check
+        span.icon.is-small.is-right(v-else-if="firstNameKanaErrorMessage.length > 0")
+            i.fas.fa-exclamation-triangle
         p.help.is-danger(v-if="firstNameKanaErrorMessage.length > 0") {{firstNameKanaErrorMessage}}
     
 </template>

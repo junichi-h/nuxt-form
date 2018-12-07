@@ -17,3 +17,5 @@ export const isMultiByte = str => {
 };
 
 export const hasHalfWidthAlphaNumeric = str => str.match(/[^A-Za-z0-9]+/);
+
+export const isHiraganaByCode = char => ((char >= 12353 && char <= 12435) || char === 12445 || char === 12446);

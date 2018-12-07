@@ -10,6 +10,8 @@
             @blur="updateEmail"
         )
         p.help.is-danger(v-if="emailErrorMessage.length > 0") {{emailErrorMessage}}
+        span.icon.is-small.is-right(v-if="isSuccessEmail")
+            i.fas.fa-check
         span.icon.is-small.is-left
             i.fas.fa-envelope
         span.icon.is-small.is-right(v-if="emailErrorMessage.length > 0")

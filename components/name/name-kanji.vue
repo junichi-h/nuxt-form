@@ -1,7 +1,7 @@
 <template lang="pug">
 .field.is-grouped
     label.label.app-label 性
-    .control.is-expanded
+    .control.is-expanded.has-icons-right
         input.input(
             :class="{'is-danger': isErrorFamilyName, 'is-success': isSuccessFamilyName}"
             type="text"
@@ -9,10 +9,14 @@
             @input="updateFamilyName"
             @blur="updateFamilyName"
         )
+        span.icon.is-small.is-right(v-if="isSuccessFamilyName")
+            i.fas.fa-check
+        span.icon.is-small.is-right(v-else-if="isErrorFamilyName")
+            i.fas.fa-exclamation-triangle
         p.help.is-danger(v-if="isErrorFamilyName") 必須項目です。
 
     label.label.second-label 名
-    .control.is-expanded
+    .control.is-expanded.has-icons-right
         input.input(
             :class="{'is-danger': isErrorFirstName, 'is-success': isSuccessFirstName}"
             type="text"
@@ -20,6 +24,10 @@
             @input="updateFirstName"
             @blur="updateFirstName"
         )
+        span.icon.is-small.is-right(v-if="isSuccessFirstName")
+            i.fas.fa-check
+        span.icon.is-small.is-right(v-else-if="isErrorFirstName")
+            i.fas.fa-exclamation-triangle
         p.help.is-danger(v-if="isErrorFirstName") 必須項目です
 </template>
 
