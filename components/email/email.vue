@@ -6,8 +6,8 @@
         :class="{'is-danger': emailErrorMessage.length > 0, 'is-success': isSuccessEmail}"
             type="email"
             placeholder="Email input"
-            @input="updateEmail"
-            @blur="updateEmail"
+            @keydown="updateEmail"
+            @blur="blurEmail"
         )
         p.help.is-danger(v-if="emailErrorMessage.length > 0") {{emailErrorMessage}}
         span.icon.is-small.is-right(v-if="isSuccessEmail")
@@ -29,10 +29,36 @@ export default {
   },
   methods: {
     updateEmail(event) {
+      if (this.isType) {
+        return;
+      }
+      this.isType = true;
+      if (this.timer !== -1) {
+        window.clearTimeout(this.timer);
+      }
+      this.timer = window.setTimeout(() => {
+        const value = event.target.value;
+        this.isType = false;
+        // @が含まれてるときだけやる。
+        if (value.indexOf('@') >= 0) {
+          this.changeEmail(value);
+          this.checkStatus();
+        }
+      }, 600);
+    },
+    blurEmail(event) {
+      if (this.timer !== -1) {
+        window.clearTimeout(this.timer);
+      }
+      this.isType = false;
       this.changeEmail(event.target.value);
       this.checkStatus();
     }
-  }
+  },
+  data: () => ({
+    timer: -1,
+    isType: false
+  })
 }
 </script>
 

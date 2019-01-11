@@ -6,8 +6,8 @@
             :class="{'is-danger': isErrorFamilyName, 'is-success': isSuccessFamilyName}"
             type="text"
             placeholder="鈴木"
-            @input="updateFamilyName"
-            @blur="updateFamilyName"
+            @keydown="updateFamilyName"
+            @blur="blurFamilyName"
         )
         span.icon.is-small.is-right(v-if="isSuccessFamilyName")
             i.fas.fa-check
@@ -21,8 +21,8 @@
             :class="{'is-danger': isErrorFirstName, 'is-success': isSuccessFirstName}"
             type="text"
             placeholder="太郎"
-            @input="updateFirstName"
-            @blur="updateFirstName"
+            @keydown="updateFirstName"
+            @blur="blurFirstName"
         )
         span.icon.is-small.is-right(v-if="isSuccessFirstName")
             i.fas.fa-check
@@ -45,14 +45,55 @@ export default {
   },
   methods: {
     updateFamilyName(event){
+      if (this.isTypeFamily) {
+        return;
+      }
+      this.isTypeFamily = true;
+      if (this._timer !== -1) {
+        window.clearTimeout(this._timer);
+      }
+      this.timer = window.setTimeout(() => {
+        this.isTypeFamily = false;
+        this.changeFamilyName(event.target.value);
+        this.checkStatus();
+      }, 600);
+    },
+    blurFamilyName(event) {
+      if (this._timer !== -1) {
+        window.clearTimeout(this._timer);
+      }
+      this.isTypeFamily = false;
       this.changeFamilyName(event.target.value);
       this.checkStatus();
     },
     updateFirstName(event){
+      if (this.isTypeFirst) {
+        return;
+      }
+      this.isTypeFirst = true;
+      if (this._timer !== -1) {
+        window.clearTimeout(this._timer);
+      }
+      this.timer = window.setTimeout(() => {
+        this.isTypeFirst = false;
+        this.changeFirstName(event.target.value);
+        this.checkStatus();
+      }, 600);
+    },
+    blurFirstName(event) {
+      if (this._timer !== -1) {
+        window.clearTimeout(this._timer);
+      }
+      this.isTypeFirst = false;
       this.changeFirstName(event.target.value);
       this.checkStatus();
     }
-  }
+  },
+  data: () => ({
+    timer: -1,
+    isTypeFamily: false,
+    isTypeFirst: false
+  })
 
 }
 </script>
